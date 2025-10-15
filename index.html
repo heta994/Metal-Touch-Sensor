@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metal Touch Sensor Arduino Project</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f9; color: #333; }
+    h1 { color: #2c3e50; }
+    pre { background: #eee; padding: 15px; border-radius: 8px; overflow-x: auto; }
+    code { color: #d63384; }
+    .download-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #2c3e50;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .download-btn:hover { background: #34495e; }
+  </style>
+</head>
+<body>
+  <h1>Metal Touch Sensor Arduino Project</h1>
+  <p>This Arduino project reads both analog voltage and digital touch input from a metal touch sensor.</p>
+
+  <h2>Connections</h2>
+  <ul>
+    <li>Analog Output → A0</li>
+    <li>Digital Output → D3</li>
+    <li>VCC → 5V</li>
+    <li>GND → GND</li>
+  </ul>
+
+  <h2>Arduino Code</h2>
+  <pre><code>
+int AInput = A0; // Analog input from sensor
+int DInput = 3;  // Digital input from sensor
+
+void setup() {
+  pinMode(AInput, INPUT);
+  pinMode(DInput, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  float analogValue = analogRead(AInput) * (5.0 / 1023.0);
+  int digitalValue = digitalRead(DInput);
+
+  Serial.print("Analog voltage value: ");
+  Serial.print(analogValue);
+  Serial.print(" V, Touch input: ");
+
+  if (digitalValue == HIGH) {
+    Serial.println("detected");
+  } else {
+    Serial.println("not detected");
+  }
+
+  Serial.println("---------------------");
+  delay(250);
+}
+  </code></pre>
+
+  <!-- Download Button -->
+  <a class="download-btn" href="https://raw.githubusercontent.com/heta994/Metal-Touch-Sensor/main/MetalTouchSensor.ino" download>
+    Download Arduino Code
+  </a>
+
+  <p>Made by <strong>Hetanshi Patel</strong> 💡</p>
+</body>
+</html>
